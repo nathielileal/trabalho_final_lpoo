@@ -82,6 +82,7 @@ public class ClienteDaoSql implements ClienteDao {
 
                 Cliente cliente = new Cliente(id, nome, sobreNome, rg, cpf, endereco, salario);
                 clientes.add(cliente);
+                System.out.println("[INFO] ID" + id);
             }
             System.out.println("[INFO] Total de clientes recuperados: " + clientes.size());
             return clientes;

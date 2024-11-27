@@ -12,7 +12,8 @@ public class Cliente implements Comparable<Cliente> {
     private Double salario;
     private long id;
 
-    public Cliente(long par, String nome, String sobreNome, String rg, String cpf, String endereco, double salario) {
+    public Cliente(long id, String nome, String sobreNome, String rg, String cpf, String endereco, double salario) {
+        this.id = id;
         this.nome = nome;
         this.sobreNome = sobreNome;
         this.rg = rg;

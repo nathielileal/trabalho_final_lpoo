@@ -10,27 +10,27 @@ package trabalho_final.View;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JTable;
 import trabalho_final.Model.Cliente;
-
 
 /**
  *
  * @author rafae
  */
 public class TabelaClienteView extends javax.swing.JPanel {
+
     private ClienteTableModel modeloTabelaCliente = new ClienteTableModel();
     private JanelaClienteView janela;
     private int linhaClicadaParaAtualizacao = -1;
+
     /**
      * Creates new form TabelaClienteView
      */
     public TabelaClienteView() {
         initComponents();
-        
+
     }
 
     /**
@@ -56,23 +56,23 @@ public class TabelaClienteView extends javax.swing.JPanel {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(scrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(scrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(scrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(scrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
         );
     }// </editor-fold>                        
 
-    private void tabelaClienteMouseClicked(java.awt.event.MouseEvent evt) {                                           
+    private void tabelaClienteMouseClicked(java.awt.event.MouseEvent evt) {
         //Pega a linha clicada
         linhaClicadaParaAtualizacao = this.tabelaCliente.rowAtPoint(evt.getPoint());
         //Pega o Cliente da linha clicada
         Cliente Cliente = modeloTabelaCliente.getCliente(linhaClicadaParaAtualizacao);
         //Seta os dados no formulário
         janela.getFormularioClienteView().setCliente(Cliente);
-    }                                          
+    }
 
     public JTable getTabelaCliente() {
         return tabelaCliente;
@@ -86,7 +86,7 @@ public class TabelaClienteView extends javax.swing.JPanel {
     public void setJanelaView(JanelaClienteView janela) {
         this.janela = janela;
     }
-    
+
     public void inserirClienteTabela(Cliente Cliente) {
         modeloTabelaCliente.adicionaCliente(Cliente);
     }
@@ -94,27 +94,27 @@ public class TabelaClienteView extends javax.swing.JPanel {
     public void setListaClientesTabela(List<Cliente> lista) {
         modeloTabelaCliente.setListaClientes(lista);
     }
-    
+
     public List<Cliente> getClientesParaExcluirDaTabela() {
         int[] linhasSelecionadas = this.getTabelaCliente().getSelectedRows();
-        List<Cliente> listaExcluir = new ArrayList();
+        List<Cliente> listaExcluir = new ArrayList<>();
         for (int i = 0; i < linhasSelecionadas.length; i++) {
-            Cliente Cliente = modeloTabelaCliente.getCliente(linhasSelecionadas[i]);
-            listaExcluir.add(Cliente);
+            Cliente cliente = modeloTabelaCliente.getCliente(linhasSelecionadas[i]);
+            // Log para verificar os IDs dos clientes
+            System.out.println("Cliente para excluir - ID: " + cliente.getId() + ", Nome: " + cliente.getNome());
+            listaExcluir.add(cliente);
         }
         return listaExcluir;
     }
-    
+
     public void excluirClientesDaTabela(List<Cliente> listaParaExcluir) {
         modeloTabelaCliente.removeClientes(listaParaExcluir);
     }
 
     public void atualizarClienteNaTabela(Cliente Cliente) {
-        
+
         modeloTabelaCliente.fireTableRowsUpdated(linhaClicadaParaAtualizacao, linhaClicadaParaAtualizacao);
-        
+
     }
 
 }
-
-

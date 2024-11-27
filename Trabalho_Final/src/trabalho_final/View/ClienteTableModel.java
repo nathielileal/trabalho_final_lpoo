@@ -18,7 +18,7 @@ import trabalho_final.Model.Cliente;
  * @author Rafael
  */
 public class ClienteTableModel extends AbstractTableModel{
-    private String[] colunas=new String[]{"id","Nome", "email", "Nascimento","Endereco"};
+    private String[] colunas=new String[]{"Nome", "sobrenome", "rg","cpf", "endereço", "salário"};
 
     private List<Cliente> lista=new ArrayList();
 
@@ -58,10 +58,13 @@ public class ClienteTableModel extends AbstractTableModel{
     public Object getValueAt(int rowIndex, int columnIndex) {
         Cliente customer = lista.get(rowIndex);
         switch (columnIndex) {
-            case 0: return customer.getId();//if column 0 (code)
-            case 1: return customer.getNome();//if column 1 (name)
-            case 2: return customer.getEmail();//if column 2 (birthday)
-            case 4: return customer.getEndereco() ;
+            case 0: return customer.getNome();//if column 0 (nome)
+            case 1: return customer.getSobreNome();//if column 1 (sobrenome)
+            case 2: return customer.getRg();//if column 2 (rg)
+            case 3: return customer.getCpf();//if column 3 (cpf)
+            case 4: return customer.getEndereco();//if column 4 (endereço)
+            case 5: return customer.getSalario();//if column 5 (salario)
+         
             default : return null;
         }
     }

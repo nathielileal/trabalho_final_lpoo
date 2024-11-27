@@ -15,6 +15,7 @@ import trabalho_final.View.JanelaClienteView;
  * @author rafae
  */
 public class ClienteController {
+
     private JanelaClienteView view;
     private ClienteDao modelDao;
 
@@ -23,62 +24,67 @@ public class ClienteController {
         this.modelDao = modelDao;
         initController();
     }
-    
-    private void initController(){
+
+    private void initController() {
         this.view.setController(this);
         this.view.initView();
     }
 
     public void cadastrarCliente() {
-        try{
+        try {
             Cliente cliente = view.getClienteFormulario();
             modelDao.add(cliente);
             view.inserirClienteView(cliente);
             view.apresentaInfo("Adicionado com sucesso!!!");
-            
-        }catch(Exception ex){
+
+        } catch (Exception ex) {
             ex.printStackTrace();
             view.apresentaErro("Erro ao criar cliente.");
         }
     }
 
     public void alterarCliente() {
-        try{
-            
+        try {
+
             Cliente cliente = (Cliente) view.getClienteParaAtualizar();
-            if(cliente==null){
+            if (cliente == null) {
                 view.apresentaInfo("Selecione um contato na tabela para atualizar.");
                 return;
             }
             modelDao.update(cliente);
             view.atualizarCliente(cliente);
-            
-        }catch(Exception ex){
+
+        } catch (Exception ex) {
             view.apresentaErro("Erro ao atualizar contato.");
         }
     }
 
     public void excluirCliente() {
-        try{
+        try {
             List<Cliente> listaParaExcluir = view.getClientesParaExcluir();
             modelDao.delete(listaParaExcluir);
             view.excluirClientesView(listaParaExcluir);
-        }catch(Exception ex){
+        } catch (Exception ex) {
             view.apresentaErro("Erro ao excluir contatos.");
         }
     }
 
     public void listarCliente() {
-        try{
+        try {
             view.limparClienteAtualizar();
             List<Cliente> lista = this.modelDao.getAll();
+
+            // Log para mostrar todos os IDs dos clientes
+            System.out.println("[INFO] Clientes recuperados:");
+            for (Cliente cliente : lista) {
+                System.out.println("[INFO] ID: " + cliente.getId() + ", Nome: " + cliente.getNome());
+            }
+
             view.mostrarListaClientes(lista);
-        }catch(Exception ex){
+        } catch (Exception ex) {
             ex.printStackTrace();
             view.apresentaErro("Erro ao listar contatos.");
         }
     }
 
-    
-    
 }
