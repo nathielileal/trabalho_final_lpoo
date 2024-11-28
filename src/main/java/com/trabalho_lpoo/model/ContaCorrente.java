@@ -24,4 +24,8 @@ public class ContaCorrente extends Conta {
         saldo += saldo * 0.01;
     }
 
+    public double getLimite() {
+        return limite;
+    }
+    
 }

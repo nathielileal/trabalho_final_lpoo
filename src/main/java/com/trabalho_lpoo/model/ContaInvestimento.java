@@ -33,4 +33,12 @@ public class ContaInvestimento extends Conta {
         saldo += saldo * 0.02;
     }
 
+    public double getMontante() {
+        return montanteMinimo;
+    }
+
+    public double getDeposito() {
+        return depositoMinimo;
+    }
+
 }
