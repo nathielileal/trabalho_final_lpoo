@@ -4,12 +4,14 @@ public abstract class Conta implements ContaI {
     private static int numeroSequencial = 1;
     protected int numero;
     protected double saldo;
-    protected Cliente dono;
+    protected long idCliente;
+    protected String tipo;
 
-    public Conta(Cliente dono) {
+    public Conta(long idCliente) {
         this.numero = numeroSequencial++;
-        this.dono = dono;
+        this.idCliente = idCliente;
         this.saldo = 0;
+        this.tipo = "";
     }
 
     @Override
@@ -31,8 +33,8 @@ public abstract class Conta implements ContaI {
     }
 
     @Override
-    public Cliente getDono() {
-        return dono;
+    public long getCliente() {
+        return idCliente;
     }
 
     @Override
@@ -43,6 +45,11 @@ public abstract class Conta implements ContaI {
     @Override
     public double getSaldo() {
         return saldo;
+    }
+    
+    @Override
+    public String getTipo() {
+        return tipo;
     }
     
 }

@@ -4,8 +4,8 @@ public class ContaCorrente extends Conta {
 
     private final double limite;
 
-    public ContaCorrente(Cliente dono, double depositoInicial, double limite) {
-        super(dono);
+    public ContaCorrente(long cliente, double depositoInicial, double limite) {
+        super(cliente);
         this.limite = limite;
         deposita(depositoInicial);
     }

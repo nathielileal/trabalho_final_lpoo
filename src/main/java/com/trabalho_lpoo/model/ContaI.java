@@ -6,11 +6,13 @@ public interface ContaI {
 
     boolean saca(double valor);
 
-    Cliente getDono();
+    long getCliente();
 
     int getNumero();
 
     double getSaldo();
+    
+    String getTipo();
 
     void remunera();
 

@@ -5,8 +5,8 @@ public class ContaInvestimento extends Conta {
     private final double montanteMinimo;
     private final double depositoMinimo;
 
-    public ContaInvestimento(Cliente dono, double depositoInicial, double montanteMinimo, double depositoMinimo) {
-        super(dono);
+    public ContaInvestimento(long cliente, double depositoInicial, double montanteMinimo, double depositoMinimo) {
+        super(cliente);
         this.montanteMinimo = montanteMinimo;
         this.depositoMinimo = depositoMinimo;
         deposita(depositoInicial);
