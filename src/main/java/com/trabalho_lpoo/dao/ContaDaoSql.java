@@ -12,14 +12,9 @@ import java.util.List;
 
 public class ContaDaoSql implements ContaDao {
 
-    private ConnectionFactory connectionFactory;
-
     private final String insert = "insert into conta (saldo, cliente_id, tipo_conta) values (?, ?, ?)";
     private final String insertCorrente = "insert into contacorrente (numero, limite) values (?, ?)";
     private final String insertInventimento = "insert into containvestimento (numero, montante_minimo, deposito_minimo) values (?, ?, ?)";
-
-    private ContaDaoSql() {
-    }
 
     private static ContaDaoSql dao;
 
@@ -31,8 +26,7 @@ public class ContaDaoSql implements ContaDao {
         }
     }
 
-    public ContaDaoSql(ConnectionFactory conFactory) {
-        this.connectionFactory = conFactory;
+    public ContaDaoSql() {
     }
 
     public long criarConta(Conta conta) throws Exception {

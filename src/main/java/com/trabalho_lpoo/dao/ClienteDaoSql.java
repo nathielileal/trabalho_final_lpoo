@@ -8,20 +8,15 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import com.trabalho_lpoo.model.Cliente;
+import java.io.IOException;
 
 public class ClienteDaoSql implements ClienteDao {
-
-    private ConnectionFactory connectionFactory;
 
     private final String insert = "INSERT INTO Cliente (nome, sobre_nome, rg, cpf, endereco, salario) VALUES (?, ?, ?, ?, ?, ?)";
     private final String select = "SELECT * FROM Cliente";
     private final String update = "UPDATE Cliente SET nome=?, sobre_nome=?, rg=?, cpf=?, endereco=?, salario=? WHERE id=?";
     private final String delete = "DELETE FROM Cliente WHERE id=?";
-     private final String selectByCpf = "select id, nome, sobre_nome, rg, cpf, endereco, salario, data_nascimento from cliente where cpf = ?";
-
-
-    private ClienteDaoSql() {
-    }
+    private final String selectByCpf = "select id, nome, sobre_nome, rg, cpf, endereco, salario, data_nascimento from cliente where cpf = ?";
 
     private static ClienteDaoSql dao;
 
@@ -33,8 +28,7 @@ public class ClienteDaoSql implements ClienteDao {
         }
     }
 
-    public ClienteDaoSql(ConnectionFactory conFactory) {
-        this.connectionFactory = conFactory;
+    public ClienteDaoSql() {
     }
 
     @Override
@@ -105,7 +99,7 @@ public class ClienteDaoSql implements ClienteDao {
         }
     }
 
-    public Cliente getClienteById(String cpf) throws Exception {
+    public Cliente getClienteByCpf(String cpf) throws Exception {
 
         try (Connection connection = ConnectionFactory.getConnection(); PreparedStatement stmtBuscar = connection.prepareStatement(selectByCpf)) {
             stmtBuscar.setString(1, cpf);

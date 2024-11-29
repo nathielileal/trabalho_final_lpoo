@@ -7,9 +7,9 @@ import java.sql.SQLException;
 
 public class ConnectionFactory {
 
-    private static final String URL = "jdbc:postgresql://localhost:5432/postgres";
+    private static final String URL = "jdbc:postgresql://localhost:5433/postgres";
     private static final String USUARIO = "postgres";
-    private static final String SENHA = "pipoca24";
+    private static final String SENHA = "@123Mudar";
 
     private ConnectionFactory() {}
 

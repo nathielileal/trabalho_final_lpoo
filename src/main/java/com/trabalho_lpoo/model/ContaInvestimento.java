@@ -40,5 +40,14 @@ public class ContaInvestimento extends Conta {
     public double getDeposito() {
         return depositoMinimo;
     }
+    
+    public void setNumero(long numero) {
+        this.numero = numero;
+    }
+    
+    @Override
+    public String getTipo() {
+        return "Conta investimento";
+    }
 
 }

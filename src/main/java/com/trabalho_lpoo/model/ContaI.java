@@ -8,7 +8,7 @@ public interface ContaI {
 
     long getCliente();
 
-    int getNumero();
+    long getNumero();
 
     double getSaldo();
     

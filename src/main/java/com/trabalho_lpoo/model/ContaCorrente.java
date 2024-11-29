@@ -28,4 +28,13 @@ public class ContaCorrente extends Conta {
         return limite;
     }
     
+    public void setNumero(long numero) {
+        this.numero = numero;
+    }
+    
+    @Override
+    public String getTipo() {
+        return "Conta corrente";
+    }
+    
 }

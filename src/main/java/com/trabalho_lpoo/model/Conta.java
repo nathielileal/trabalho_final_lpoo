@@ -2,7 +2,7 @@ package com.trabalho_lpoo.model;
 
 public abstract class Conta implements ContaI {
     private static int numeroSequencial = 1;
-    protected int numero;
+    protected long numero;
     protected double saldo;
     protected long idCliente;
     protected String tipo;
@@ -38,7 +38,7 @@ public abstract class Conta implements ContaI {
     }
 
     @Override
-    public int getNumero() {
+    public long getNumero() {
         return numero;
     }
 
