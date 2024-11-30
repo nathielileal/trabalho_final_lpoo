@@ -2,18 +2,10 @@ package com.trabalho_lpoo.view;
 
 import com.trabalho_lpoo.controller.VincularContaController;
 import com.trabalho_lpoo.model.Cliente;
-import com.trabalho_lpoo.dao.ClienteDao;
 import com.trabalho_lpoo.dao.ClienteDaoSql;
-import com.trabalho_lpoo.dao.ConnectionFactory;
 import com.trabalho_lpoo.dao.ContaDaoSql;
-import com.trabalho_lpoo.dao.DaoFactory;
-import com.trabalho_lpoo.dao.DaoType;
 import com.trabalho_lpoo.model.ContaCorrente;
 import com.trabalho_lpoo.model.ContaInvestimento;
-import java.awt.event.ActionEvent;
-import java.io.IOException;
-import java.sql.Connection;
-import java.sql.SQLException;
 import java.util.List;
 import javax.swing.JOptionPane;
 
@@ -25,27 +17,19 @@ public class VincularContaView extends javax.swing.JPanel {
     public VincularContaView() {
         initComponents();
         atualizarFormulario();
-//        cpfLabel.setVisible(false);
     }
 
     public void setController(VincularContaController controller) {
-
-//        this.botaoCriar.addActionListener(e -> controller.cadastrarCliente());
-//        this.botaoAtualizar.addActionListener(e -> controller.alterarCliente());
-//        this.botaoExcluir.addActionListener(e -> controller.excluirCliente());
-//        this.botaoListar.addActionListener(e -> controller.listarCliente());
     }
 
     public void initView() {
         /* Create and display the form */
-//        tabelaClienteView.setJanelaView(this);
-//        java.awt.EventQueue.invokeLater(() -> this.setVisible(true));
         java.awt.EventQueue.invokeLater(() -> {
             javax.swing.JFrame frame = new javax.swing.JFrame("Vincular Conta");
             frame.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
-            frame.add(this); // Adiciona o JPanel ao JFrame
-            frame.setSize(400, 300); // Define o tamanho da janela
-            frame.setVisible(true); // Exibe a janela
+            frame.add(this); 
+            frame.setSize(400, 300); 
+            frame.setVisible(true); 
         });
     }
 
@@ -57,6 +41,7 @@ public class VincularContaView extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         jLabel1 = new javax.swing.JLabel();
         clienteComboBox = new javax.swing.JComboBox<>();
@@ -73,7 +58,15 @@ public class VincularContaView extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         btnCriarConta = new javax.swing.JButton();
 
+        setLayout(new java.awt.GridBagLayout());
+
         jLabel1.setText("Cliente:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(12, 26, 0, 0);
+        add(jLabel1, gridBagConstraints);
 
         clienteComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {}));
         clienteComboBox.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
@@ -85,8 +78,22 @@ public class VincularContaView extends javax.swing.JPanel {
                 clienteComboBoxPopupMenuWillBecomeVisible(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 6;
+        gridBagConstraints.ipadx = 81;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(6, 26, 0, 0);
+        add(clienteComboBox, gridBagConstraints);
 
         jLabel2.setText("Tipo de conta:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 13;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(12, 2, 0, 0);
+        add(jLabel2, gridBagConstraints);
 
         tipoComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Conta corrente", "Conta investimento"}));
         tipoComboBox.addActionListener(new java.awt.event.ActionListener() {
@@ -94,28 +101,104 @@ public class VincularContaView extends javax.swing.JPanel {
                 tipoComboBoxActionPerformed(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 12;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.ipadx = 56;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(6, 13, 0, 26);
+        add(tipoComboBox, gridBagConstraints);
 
         depositoInicialText.setText("Depósito inicial (R$):");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(28, 26, 0, 0);
+        add(depositoInicialText, gridBagConstraints);
 
         depositoInicialTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 depositoInicialTextFieldActionPerformed(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 12;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 64;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(23, 13, 0, 26);
+        add(depositoInicialTextField, gridBagConstraints);
 
         limiteText.setText("Limite (R$): ");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(14, 26, 0, 0);
+        add(limiteText, gridBagConstraints);
 
         limiteTextField.setActionCommand("<Not Set>");
         limiteTextField.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         limiteTextField.setDragEnabled(true);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 12;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 64;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(9, 13, 0, 26);
+        add(limiteTextField, gridBagConstraints);
 
         depositoMinText.setText("Depósito mínimo (R$):");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(14, 26, 0, 0);
+        add(depositoMinText, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 12;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 64;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(9, 13, 0, 26);
+        add(depositoMinTextField, gridBagConstraints);
 
         numContaText.setText("Número da conta:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 9;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 26, 0, 0);
+        add(numContaText, gridBagConstraints);
 
         numero.setText("1");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 12;
+        gridBagConstraints.gridy = 9;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 13, 0, 0);
+        add(numero, gridBagConstraints);
 
         jLabel3.setText("Vincular conta");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 7;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(13, 9, 0, 0);
+        add(jLabel3, gridBagConstraints);
 
         btnCriarConta.setText("Criar");
         btnCriarConta.addActionListener(new java.awt.event.ActionListener() {
@@ -123,76 +206,13 @@ public class VincularContaView extends javax.swing.JPanel {
                 btnCriarContaActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(depositoInicialText)
-                    .addComponent(limiteText)
-                    .addComponent(clienteComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
-                    .addComponent(depositoMinText)
-                    .addComponent(numContaText))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(numero)
-                        .addGap(116, 116, 116))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(jLabel2)
-                            .addGap(74, 74, 74))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(tipoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(depositoInicialTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(limiteTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(depositoMinTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(26, 26, 26)))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(154, 154, 154)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnCriarConta)
-                    .addComponent(jLabel3))
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(13, 13, 13)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(clienteComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tipoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(depositoInicialText)
-                    .addComponent(depositoInicialTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(9, 9, 9)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(limiteText)
-                    .addComponent(limiteTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(9, 9, 9)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(depositoMinText)
-                    .addComponent(depositoMinTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(numContaText)
-                    .addComponent(numero))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnCriarConta)
-                .addContainerGap(17, Short.MAX_VALUE))
-        );
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridy = 10;
+        gridBagConstraints.gridwidth = 7;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(12, 8, 17, 0);
+        add(btnCriarConta, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
     private void depositoInicialTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depositoInicialTextFieldActionPerformed
@@ -208,7 +228,7 @@ public class VincularContaView extends javax.swing.JPanel {
     }//GEN-LAST:event_tipoComboBoxActionPerformed
 
     private void btnCriarContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCriarContaActionPerformed
-        criarConta(evt);
+        criarConta();
     }//GEN-LAST:event_btnCriarContaActionPerformed
 
     private void atualizarFormulario() {
@@ -261,7 +281,7 @@ public class VincularContaView extends javax.swing.JPanel {
         }
     }
 
-    private void criarConta(ActionEvent evt) {
+    private void criarConta() {
         try {
             String nomeSelecionado = (String) clienteComboBox.getSelectedItem();
 
