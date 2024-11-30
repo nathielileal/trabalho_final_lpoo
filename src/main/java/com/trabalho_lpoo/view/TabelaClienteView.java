@@ -85,8 +85,9 @@ public class TabelaClienteView extends javax.swing.JPanel {
         int[] linhasSelecionadas = this.getTabelaCliente().getSelectedRows();
         List<Cliente> listaExcluir = new ArrayList<>();
         for (int i = 0; i < linhasSelecionadas.length; i++) {
-            Cliente cliente = modeloTabelaCliente.getCliente(linhasSelecionadas[i]);
-            // Log para verificar os IDs dos clientes
+            int linhaModelo = tabelaCliente.convertRowIndexToModel(linhasSelecionadas[i]);
+            Cliente cliente = modeloTabelaCliente.getCliente(linhaModelo);
+            
             System.out.println("Cliente para excluir - ID: " + cliente.getId() + ", Nome: " + cliente.getNome());
             listaExcluir.add(cliente);
         }
